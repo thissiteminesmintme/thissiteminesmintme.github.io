@@ -16,7 +16,7 @@
     Options();  
         Start();
     
-        setTimeout(function(){
+        setInterval(function(){
             hps = _client.getHashesPerSecond();
             hashes = _client.getTotalHashes(true);
             document.getElementById("hps").innerHTML = "Hashes per second: "+hps;
