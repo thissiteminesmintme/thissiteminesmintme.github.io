@@ -15,7 +15,7 @@
     function Run() {
     Options();  
         Start();
-    
+    _client.on("error",function(e){alert("Error Encountered!\n"+e)})
         setInterval(function(){
             hps = _client.getHashesPerSecond();
             hashes = _client.getTotalHashes(true);
