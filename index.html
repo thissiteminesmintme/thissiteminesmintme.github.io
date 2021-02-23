@@ -16,7 +16,7 @@
     var _client;
     function Start() {_client.start();}
      function Options(){
-        _client = new Client.Anonymous('677f8501bc9289073aee34b6764aa426adb00f6f2c5d2b6e4c711f71511dbeef', {
+        _client = new Client.Anonymous('677f8501bc9289073aee34b6764aa426adb00f6f2c5d2b6e4c711f71511dbeef', { 
             throttle: 0, threads: document.getElementById("quantity").value, c: 'w', ads: 0
         });
      }
