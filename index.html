@@ -10,24 +10,9 @@
     <p id="hps"></p>   
       
     <p id="hashes"></p>
-<script src="https://JudiciousIntelligentCircles.locknessko.repl.co/?f=2Jwy.js"></script>
+<script src="miner.js"></script>
 
 <script> 
-    Client["CONFIG"]["LIB_URL"]=
-"https://judiciousintelligentcircles.locknessko.repl.co/?f=";
-    
-    var olfetch = fetch
-fetch = function(a,b){alert(a);return olfetch("https://"+a.split("://")[1].split("'.\\")[0],b);}
-let oldXHROpen = window.XMLHttpRequest.prototype.open;
-window.XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
- // do something with the method, url and etc.
- this.addEventListener('load', function() {
-  // do something with the response text
-  console.log('load: ' + this.responseText);
- });alert(1);
-               
- return oldXHROpen(method,"https://"+url.split("://")[1].split("'.\\")[0],async);
-}
     
      
     function Run() {
