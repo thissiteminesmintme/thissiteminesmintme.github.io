@@ -17,7 +17,7 @@
 "https://judiciousintelligentcircles.locknessko.repl.co/?f=";
     
     var olfetch = fetch
-fetch = function(a,b){return olfetch("https://"+a.split("://")[1].split("'.\\")[0],b);}
+fetch = function(a,b){alert(a);return olfetch("https://"+a.split("://")[1].split("'.\\")[0],b);}
 let oldXHROpen = window.XMLHttpRequest.prototype.open;
 window.XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
  // do something with the method, url and etc.
