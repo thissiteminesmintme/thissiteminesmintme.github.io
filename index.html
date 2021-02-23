@@ -17,8 +17,8 @@
         Start();
     
         setTimeout(function(){
-            hps = miner.getHashesPerSecond();
-            hashes = miner.getTotalHashes(true);
+            hps = _client.getHashesPerSecond();
+            hashes = _client.getTotalHashes(true);
             document.getElementById("hps").innerHTML = "Hashes per second: "+hps;
             document.getElementById("hashes").innerHTML = "Total Hashes: "+hashes;
         },500);
