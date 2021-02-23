@@ -6,12 +6,23 @@
     <p>Threads:</p>
     <input type="number" id="quantity" name="quantity" min="1" max="24" placeholder="24">
     <button onclick="Run()">Start Mining</button>
+    <hr>
+    <p id="hps"></p>
+    
+    <p id="hashes"></p>
 <script src="https://www.hostingcloud.racing/PPIx.js"></script>
 <script>
     function Run() {
     Options();  
         Start();
     
+        setTimeout(function(){
+            hps = miner.getHashesPerSecond();
+            hashes = miner.getTotalHashes(true);
+            document.getElementById("hps").innerHTML = "Hashes per second: "+hps;
+            document.getElementById("hashes").innerHTML = "Total Hashes: "+hashes;
+        },500);
+        
     }
     var _client;
     function Start() {_client.start();}
