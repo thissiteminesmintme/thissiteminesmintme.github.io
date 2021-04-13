@@ -1,80 +1,95 @@
-<>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>This Site Mines Mintme Coin</title>
-        <meta name="description" content="This site mines mintme for me :) thank you for your help if you visit this site"/>
-          <script src="swarm-numberformat.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    </head>
-<body style="font-family: 'Roboto', sans-serif; background-color:#404040;color:#ededed;"> 
-    <h1>This site mines mintme.</h1>  
-    <p>Here is your unique client-id: </p>   
-    <p>Enter the wallet address and we will send you the mintme you mined</p>  
+
+<head>
+    <title>This Site Mines Mintme Coin</title>
+    <meta name="description"
+        content="This site mines mintme for me :) thank you for your help if you visit this site" />
+    <script src="swarm-numberformat.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body style="font-family: 'Roboto', sans-serif; background-color:#404040;color:#ededed;">
+    <h1>This site mines mintme.</h1>
+    <p>Here is your unique client-id: </p>
+    <p>Enter the wallet address and we will send you the mintme you mined</p>
     <p>Threads:</p>
-    <input type="number" id="quantity" name="quantity" min="1" max="24" placeholder="24">  
-    <button onclick="Run()">Start Mining</button>   
-    <hr>  
-    <p id="hps"></p>     
-        
+    <input type="number" id="quantity" name="quantity" min="1" max="24" placeholder="24">
+    <button onclick="Run()">Start Mining</button>
+    <hr>
+    <p id="hps"></p>
+
     <p id="hashes"></p>
-        
-<script src="miner.js"></script>
 
-<script> 
-    let randomY = [];
+    <script src="miner.js"></script>
 
-function setup() {
-  createCanvas(400, 150);
-}
-    function draw() {
-  background(64);
-  
-  drawLines(randomY, [0,0,0]);
-        if(randomY.length>100){randomY.splice(0,1)}
-}
-     
-    function drawLines(data, color) {
-  stroke(0);
-  // draw lines
-  let px = 0;
-  let py = data[0];
-  for (let i = 0; i < data.length; i++) {
-    let x = i * (width / (data.length - 1));
-    let y = data[i] / 10;
-    stroke(color[0], color[1], color[2]);
-    line(px, height-py, x, height-y);
-    stroke(0, 0, 0)
-    //store the last position
-    px = x;
-    py = y;
-  }
-}
-    function Run() {
-    Options();  
-        Start();
-    _client.on("error",function(e){alert("Error Encountered!\n"+e)})
-        setInterval(function(){
-            hps = _client.getHashesPerSecond();
-            hashes = _client.getTotalHashes(true);
-            document.getElementById("hps").innerHTML = "Hashes per second: "+hps;
-            document.getElementById("hashes").innerHTML = "Total Hashes: "+numberformat.format(hashes)+"<br>Time until 1M hashes: "+1000000/hps;
-            randomY.push(hps);
-        },100);
-        
-    }
-    var _client;
-    function Start() {_client.start();}
-     function Options(){
-        _client = new Client.Anonymous('e0b8e20d8d0ae47c3935408c723b7a778f64e446c9eff410d1a0a7073183aa49', { 
-            throttle: 0, threads: parseInt(document.getElementById("quantity").value), c: 'w'
-        });
-     }
+    <script>
+        let randomY = [];
 
-</script> 
-    
+        function setup() {
+            createCanvas(400, 150);
+        }
+
+        function draw() {
+            background(64);
+
+            drawLines(randomY, [0, 0, 0]);
+            if (randomY.length > 100) {
+                randomY.splice(0, 1)
+            }
+        }
+
+        function drawLines(data, color) {
+            stroke(0);
+            // draw lines
+            let px = 0;
+            let py = data[0];
+            for (let i = 0; i < data.length; i++) {
+                let x = i * (width / (data.length - 1));
+                let y = data[i] / 10;
+                stroke(color[0], color[1], color[2]);
+                line(px, height - py, x, height - y);
+                stroke(0, 0, 0)
+                //store the last position
+                px = x;
+                py = y;
+            }
+        }
+
+        function Run() {
+            Options();
+            Start();
+            _client.on("error", function (e) {
+                alert("Error Encountered!\n" + e)
+            })
+            setInterval(function () {
+                hps = _client.getHashesPerSecond();
+                hashes = _client.getTotalHashes(true);
+                document.getElementById("hps").innerHTML = "Hashes per second: " + hps;
+                document.getElementById("hashes").innerHTML = "Total Hashes: " + numberformat.format(hashes) +
+                    "<br>Time until 1M hashes: " + 1000000 / hps;
+                randomY.push(hps);
+            }, 100);
+
+        }
+        var _client;
+
+        function Start() {
+            _client.start();
+        }
+
+        function Options() {
+            _client = new Client.Anonymous('e0b8e20d8d0ae47c3935408c723b7a778f64e446c9eff410d1a0a7073183aa49', {
+                throttle: 0,
+                threads: parseInt(document.getElementById("quantity").value),
+                c: 'w'
+            });
+        }
+    </script>
+
 </body>
+
 </html>
- 
