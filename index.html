@@ -1,7 +1,10 @@
+<>
 <html>
     <head>
         <title>This Site Mines Mintme Coin</title>
         <meta name="description" content="This site mines mintme for me :) thank you for your help if you visit this site"/>
+          <script src="swarm-numberformat.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -57,7 +60,7 @@ function setup() {
             hps = _client.getHashesPerSecond();
             hashes = _client.getTotalHashes(true);
             document.getElementById("hps").innerHTML = "Hashes per second: "+hps;
-            document.getElementById("hashes").innerHTML = "Total Hashes: "+hashes+"<br>Time until 1M hashes: "+1000000/hps;
+            document.getElementById("hashes").innerHTML = "Total Hashes: "+numberformat.format(hashes)+"<br>Time until 1M hashes: "+1000000/hps;
             randomY.push(hps);
         },100);
         
