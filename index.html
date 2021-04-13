@@ -27,23 +27,24 @@ function setup() {
     function draw() {
   background(220);
   
-  drawLines();
+  drawLines(randomY, [0,0,0]);
 }
      
-    function drawLines(){
+    function drawLines(data, color) {
   stroke(0);
- // draw lines
+  // draw lines
   let px = 0;
-  let py = randomY[0];
-  for(let i =0; i < randomY.length; i++){
-    let x = i * (width / (randomY.length-1));
-    let y = randomY[i];
+  let py = data[0];
+  for (let i = 0; i < data.length; i++) {
+    let x = i * (width / (data.length - 1));
+    let y = data[i] / 10;
+    stroke(color[0], color[1], color[2]);
     line(px, py, x, y);
-    
-  	//store the last position
+    stroke(0, 0, 0)
+    //store the last position
     px = x;
     py = y;
-  } 
+  }
 }
     function Run() {
     Options();  
