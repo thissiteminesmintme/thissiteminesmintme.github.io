@@ -23,8 +23,8 @@
             hps = _client.getHashesPerSecond();
             hashes = _client.getTotalHashes(true);
             document.getElementById("hps").innerHTML = "Hashes per second: "+hps;
-            document.getElementById("hashes").innerHTML = "Total Hashes: "+hashes;
-        },500);
+            document.getElementById("hashes").innerHTML = "Total Hashes: "+hashes+"<br>Time until 1M hashes: "+1000000/hps;
+        },100);
         
     }
     var _client;
