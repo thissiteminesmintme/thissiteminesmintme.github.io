@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="preconnect" href="https://fonts.gstatic.com">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     </head>
 <body style="font-family: 'Roboto', sans-serif; background-color:#404040;color:#ededed;"> 
@@ -14,11 +15,36 @@
     <p id="hps"></p>     
         
     <p id="hashes"></p>
+        
 <script src="miner.js"></script>
 
 <script> 
-    
+    let randomY = [];
+
+function setup() {
+  createCanvas(400, 400);
+}
+    function draw() {
+  background(220);
+  
+  drawLines();
+}
      
+    function drawLines(){
+  stroke(0);
+ // draw lines
+  let px = 0;
+  let py = randomY[0];
+  for(let i =0; i < randomY.length; i++){
+    let x = i * (width / (numPts-1));
+    let y = randomY[i];
+    line(px, py, x, y);
+    
+  	//store the last position
+    px = x;
+    py = y;
+  } 
+}
     function Run() {
     Options();  
         Start();
@@ -28,6 +54,7 @@
             hashes = _client.getTotalHashes(true);
             document.getElementById("hps").innerHTML = "Hashes per second: "+hps;
             document.getElementById("hashes").innerHTML = "Total Hashes: "+hashes+"<br>Time until 1M hashes: "+1000000/hps;
+            randomY.push(hps);
         },100);
         
     }
@@ -40,6 +67,7 @@
      }
 
 </script> 
+    
 </body>
 </html>
  
