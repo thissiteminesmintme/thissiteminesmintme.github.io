@@ -28,6 +28,7 @@ function setup() {
   background(64);
   
   drawLines(randomY, [0,0,0]);
+        if(randomY.length>100){randomY.splice(randomY.length-1,1)}
 }
      
     function drawLines(data, color) {
