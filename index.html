@@ -22,7 +22,7 @@
     let randomY = [];
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(400, 150);
 }
     function draw() {
   background(64);
@@ -40,7 +40,7 @@ function setup() {
     let x = i * (width / (data.length - 1));
     let y = data[i] / 10;
     stroke(color[0], color[1], color[2]);
-    line(px, 400-py, x, 400-y);
+    line(px, height-py, x, height-y);
     stroke(0, 0, 0)
     //store the last position
     px = x;
